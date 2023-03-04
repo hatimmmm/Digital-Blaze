@@ -21,8 +21,8 @@ Route::get('/', function () {
 //     return 'welcome'.' '.$name.' '. 'age'.' ' .$age;
 // });
 
-Route::get('/home/{name}/{age?}', function ($name,$age=21) {
+// Route::get('/home/{name}/{age?}', function ($name,$age=21) {
 
     
-    return 'welcome'.' '.$name.' '. 'age'.' ' .$age;
-});
+//     return 'welcome'.' '.$name.' '. 'age'.' ' .$age;
+// });
