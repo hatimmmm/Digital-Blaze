@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\BrandController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 // use App\Http\Controller\Api\AuthController;
@@ -25,8 +26,15 @@ Route::middleware('auth:sanctum')->group(function(){
         return $request->user();
     });
 Route::post('/logout', [ApiAuthController::class, 'logout']);
-
 });
 Route::post('/signup', [ApiAuthController::class, 'signup']);
 Route::post('/login', [ApiAuthController::class, 'login']);
+Route::post('/brand/add',[BrandController::class,'store']);
+Route::post('/brand/show',[BrandController::class,'show']);
+Route::post('/brand/update',[BrandController::class,'update']);
+Route::post('/brand/delete',[BrandController::class,'destroy']);
+
+
+
+
 
