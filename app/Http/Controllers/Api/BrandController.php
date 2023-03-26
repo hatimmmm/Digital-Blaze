@@ -7,6 +7,8 @@ use App\Http\Resources\BrandResource;
 use App\Models\Brand;
 use App\Http\Requests\StoreBrandRequest;
 use App\Http\Requests\UpdateBrandRequest;
+use Symfony\Component\HttpFoundation\Request;
+
 
 class BrandController extends Controller
 {
@@ -17,7 +19,10 @@ class BrandController extends Controller
      */
     public function index()
     {
-        // $brands=Brand::all();
+        return BrandResource::collection(
+            Brand::query()->orderBy('name','asc')->paginate()
+            ) ;
+
         
     }
 
@@ -43,7 +48,7 @@ class BrandController extends Controller
      */
     public function show(Brand $brand)
     {
-        return new BrandResource($brand);
+        return new BrandResource($brand) ;
     }
 
     /**
@@ -53,11 +58,11 @@ class BrandController extends Controller
      * @param  \App\Models\Brand  $brand
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateBrandRequest $request, Brand $brand)
+    public function update(UpdateBrandRequest $request ,Brand $brand)
     /** @var  */
     {
         $data = $request->validated();
-        // $brand->update($data);
+        $brand->update($data);
         return response($brand);
     }
 
@@ -70,6 +75,6 @@ class BrandController extends Controller
     public function destroy(Brand $brand)
     {
         $brand->delete();
-        return response('',204);
+        return response('successfully deleted',204);
     }
 }

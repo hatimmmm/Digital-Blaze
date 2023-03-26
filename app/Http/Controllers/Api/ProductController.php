@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Http\Resources\ProductResource;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 
@@ -16,7 +17,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        return ProductResource::collection(
+            Product::all()
+            ) ;
     }
 
     /**
@@ -27,7 +30,9 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        //
+        return ProductResource::collection(
+            Brand::query()->orderBy('name','asc')->paginate()
+            ) ;
     }
 
     /**

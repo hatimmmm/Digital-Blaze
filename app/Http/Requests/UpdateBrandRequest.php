@@ -24,8 +24,8 @@ class UpdateBrandRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|unique|string|max:55'.$this->id,
-            'logo'=>'required|unique|string|max:255'
+            'name'=>'required|string|max:55|',
+            'logo'=>'required|string|max:255|',
         ];
     }
 }
