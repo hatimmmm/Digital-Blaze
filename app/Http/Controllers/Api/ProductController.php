@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Http\Resources\ProductResource;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Models\Brand;
 
 class ProductController extends Controller
 {
@@ -18,7 +19,7 @@ class ProductController extends Controller
     public function index()
     {
         return ProductResource::collection(
-            Product::all()
+            Product::with('brand')->get()
             ) ;
     }
 

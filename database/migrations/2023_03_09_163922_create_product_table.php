@@ -13,17 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('product', function (Blueprint $table) {
+        Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->double('price');
             $table->longText('description');
             $table->string('image');
             $table->boolean('available');
-            $table->unsignedBigInteger('brand_id');
-            $table->foreign('brand_id')->references('id')->on('brand');
-            $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('category');            
+            $table->foreignId('brand_id')->constrained('brands','id')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('category_id')->constrained('categories','id')->onDelete('cascade')->onUpdate('cascade');           
             $table->timestamps();
         });
     }

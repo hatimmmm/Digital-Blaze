@@ -36,7 +36,7 @@ class AuthController extends Controller
 
         $user = Auth::user();
         $token = $user->createToken('main')->plainTextToken;
-
+        
         return response(compact('user','token'));
         
         
@@ -44,10 +44,11 @@ class AuthController extends Controller
    
     public function logout(Request $request)
     {
-        /** @var User $user */
-        $user = $request->user();
-        $token=$user->currentAccessToken()->delete();
-        return response($token);
+        $request->session()->invalidate();
+        
+        $request->session()->regenerateToken();
+    
+        return response()->json('Successfully logged out');
         
     }
 };
