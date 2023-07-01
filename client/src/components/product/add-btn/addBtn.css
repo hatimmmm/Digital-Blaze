@@ -1,0 +1,18 @@
+.add-to-cart {
+  height: 30px;
+  border: 2px #1bab4d solid;
+  border-radius: 7px;
+  color: #1bab4d;
+  width: 100px;
+  background: none;
+  font-family: poppins;
+  font-size: 0.8rem;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  font-weight: bold;
+}
+.add-to-cart:hover {
+  background-color: #1bab4d;
+  color: #403d39;
+  scale: 1.05;
+}

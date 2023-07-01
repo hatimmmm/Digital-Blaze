@@ -1,0 +1,18 @@
+.remove-btn {
+  height: 30px;
+  border: 2px #eb2828 solid;
+  border-radius: 7px;
+  color: #eb2828;
+  width: 100px;
+  background: none;
+  font-family: poppins;
+  font-size: 0.8rem;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  font-weight: bold;
+}
+.remove-btn:hover {
+  background-color: #eb2828;
+  color: #403d39;
+  scale: 1.05;
+}

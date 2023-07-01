@@ -1,0 +1,60 @@
+.delbtn {
+  color: #eb2828;
+  cursor: pointer;
+  height: 1.5em;
+  width: 1.5em;
+  transition: all 0.1s ease-in-out;
+}
+
+.delbtn:hover {
+  color: #eb5e28;
+}
+
+.delbtn:active {
+  scale: 0.9;
+}
+.cart tbody {
+  height: 80%;
+  color: #ccc5b9;
+}
+
+.table-row {
+  height: 100px;
+  position: relative;
+}
+.table-row td {
+  height: 150px;
+  text-align: center;
+  border-bottom: solid #403d39 3px;
+}
+
+.amount {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#itemTotal {
+  width: 15%;
+}
+.chevron {
+  cursor: pointer;
+}
+
+.remove {
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  left: -50px;
+  top: 50px;
+  transition: all 0.3s ease-in-out;
+  color: #eb2828;
+  cursor: pointer;
+}
+
+.table-row:hover .remove,
+.remove:hover {
+  left: 0;
+  transform: rotate(180deg);
+}

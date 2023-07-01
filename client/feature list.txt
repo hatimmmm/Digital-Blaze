@@ -1,0 +1,1 @@
+-make button show added when you add an item

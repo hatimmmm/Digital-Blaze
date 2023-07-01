@@ -1,0 +1,26 @@
+.cart {
+  width: 100%;
+  min-height: 50%;
+  overflow-y: auto;
+  margin: 20px 0 20px;
+  /* border: #ccc5b9 2px solid; */
+  border-radius: 20px;
+  scroll-behavior: smooth;
+  padding-bottom: 50px;
+  position: relative;
+}
+.cart table {
+  color: #403d39;
+  width: 100%;
+}
+
+.quantity {
+  max-width: fit-content;
+}
+.table-row .img {
+  width: 20%;
+}
+
+.img img {
+  height: 100px;
+}
