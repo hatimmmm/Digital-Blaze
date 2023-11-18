@@ -1,23 +1,18 @@
 import { React, useRef, useState } from "react";
-import { Link, redirect } from "react-router-dom";
-import axiosClient from "../../axios-client";
-import { useStateContext } from "../../context/contextProvider";
+import { Link, } from "react-router-dom";
 import "./signup.css";
 import { motion } from "framer-motion";
+import { AuthData } from "../../setup/auth/AuthWrapper";
 
 const Signup = () => {
+  const { register, errors } = AuthData()
   const nameRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmationRef = useRef();
 
-  const { token, setUser, setToken } = useStateContext();
-  const [errors, setErrors] = useState(null);
-
   const onSubmit = (e) => {
     e.preventDefault();
-    setErrors(null);
-
     const payload = {
       name: nameRef.current.value,
       email: emailRef.current.value,
@@ -25,23 +20,7 @@ const Signup = () => {
       password_confirmation: passwordConfirmationRef.current.value,
     };
 
-    axiosClient
-      .post("/signup", payload)
-      .then(({ data }) => {
-        setUser(data.user);
-        setToken(data.token);
-        console.log(token);
-      })
-      .catch((err) => {
-        const response = err.response;
-        if (response && response.status === 422) {
-          if (response.data.errors) {
-            setErrors(response.data.errors);
-          }
-        }
-      });
-
-    console.log(payload);
+    register(payload)
   };
   return (
     <div className="signup">

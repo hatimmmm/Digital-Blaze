@@ -3,8 +3,8 @@ import { React, createContext, useState, useContext } from "react";
 const StateContext = createContext({
   user: null,
   token: null,
-  setUser: () => {},
-  setToken: () => {},
+  setUser: () => { },
+  setToken: () => { },
 });
 
 export const ContextProvider = ({ children }) => {

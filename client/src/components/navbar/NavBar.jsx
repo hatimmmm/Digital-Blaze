@@ -3,46 +3,23 @@ import { FaShoppingCart, FaStore, FaHome } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import "./navBar.css";
 import { useSelector } from "react-redux";
-import { useStateContext } from "../../context/contextProvider";
-import axiosClient from "../../axios-client";
-import { useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { AuthData } from "../../setup/auth/AuthWrapper";
+import { RenderNav } from "../../routes/routes";
 
 const NavBar = () => {
   const { items } = useSelector((state) => state.cart);
   const amount = items.length;
-  const { token, user, setToken, setUser } = useStateContext();
+  // const { token, user, setToken, setUser } = useStateContext();
   const [toggle, setToggle] = useState(false);
-
-  useEffect(() => {
-    axiosClient
-      .get("/user")
-      .then(({ data }) => {
-        setUser(data);
-      })
-      .catch((err) => {
-        localStorage.removeItem("ACCESS_TOKEN");
-        console.log(err);
-      });
-  }, []);
+  const { user, logout, token } = AuthData()
 
   const onToggle = () => {
     setToggle(!toggle);
   };
 
-  const onLogout = (e) => {
-    console.log('logout');
-    e.preventDefault();
-    axiosClient
-      .post("/logout")
-      .then(() => {
-        setUser({});
-        setToken(null);
-      })
-      .catch((response) => {
-        //handle error
-        console.log(response);
-      });
+  const onLogout = () => {
+    logout()
   };
 
   return (
@@ -51,50 +28,9 @@ const NavBar = () => {
         <img src="/FIQ logo.png" alt="logo" />
         <h1>DigitalBlaze</h1>
       </div>
-      <ul>
-        <li>
-          <NavLink
-            to="/home"
-            className={({ isActive }) =>
-              isActive ? "nav-link active" : "nav-link"
-            }
-          >
-            Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/products"
-            className={({ isActive }) =>
-              isActive ? "nav-link active" : "nav-link"
-            }
-          >
-            Products
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/signup"
-            className={({ isActive }) =>
-              isActive ? "nav-link active" : "nav-link"
-            }
-          >
-            Signup
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/login"
-            className={({ isActive }) =>
-              isActive ? "nav-link active" : "nav-link"
-            }
-          >
-            Login
-          </NavLink>
-        </li>
-      </ul>
+      <RenderNav />
 
-      <NavLink to="bag" className="cart-icon-container">
+      <NavLink to="/bag" className="cart-icon-container">
         {({ isActive }) => (
           <>
             <span className="counter">{amount}</span>
@@ -104,7 +40,7 @@ const NavBar = () => {
           </>
         )}
       </NavLink>
-      {token && (
+      {token ? (
         <>
           <div className="profile-avatar" onClick={onToggle}>
             <img src="img/profile-picture.png" alt="" />
@@ -124,8 +60,8 @@ const NavBar = () => {
                     <img src="img/profile-picture.png" alt="" />
                   </div>
                   <div className="profile-info">
-                    <div className="user-name">{user.name}</div>
-                    <div classsName="user-email">{user.email}</div>
+                    <div className="user-name">{user.data.name}</div>
+                    <div classsName="user-email">{user.data.email}</div>
                   </div>
                 </div>
                 <div className="popup-item">
@@ -143,7 +79,21 @@ const NavBar = () => {
             )}
           </AnimatePresence>
         </>
-      )}
+      ) : (
+        <>
+          <NavLink to='/login'
+            className={({ isActive }) =>
+              isActive ? "nav-link active" : "nav-link"}
+          >
+            Login
+          </NavLink>
+          <NavLink to='/Register'
+            className={({ isActive }) =>
+              isActive ? "nav-link active" : "nav-link"
+            }>
+            Register
+          </NavLink>
+        </>)}
     </nav>
   );
 };

@@ -5,10 +5,6 @@ import NavBar from "../components/navbar/NavBar";
 import { useStateContext } from "../context/contextProvider";
 
 const DefaultLayout = () => {
-  const { token, user } = useStateContext();
-  if (!token) {
-    return <Navigate to="/login" />;
-  }
   return (
     <>
       <NavBar />

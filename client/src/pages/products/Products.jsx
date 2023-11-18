@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Carousel from "../../components/carousel/Carousel";
 import "./products.css";
-import axiosClient from "../../axios-client";
+import axiosClient from "../../setup/api/axios-client";
 import { useEffect } from "react";
 import { useState } from "react";
 import { setBrands, setProducts } from "../../store/features/cart/cartSlice";

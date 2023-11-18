@@ -1,16 +1,18 @@
 import { useState } from "react";
 import { React, useRef } from "react";
-import { Link, redirect } from "react-router-dom";
-import axiosClient from "../../axios-client";
+import { Link, redirect, useNavigate } from "react-router-dom";
+import axiosClient from "../../setup/api/axios-client";
 import { useStateContext } from "../../context/contextProvider";
 import "./login.css";
 import { motion } from "framer-motion";
+import { AuthData } from "../../setup/auth/AuthWrapper";
+
 
 const Login = () => {
+  const { login, errors, user } = AuthData()
   const emailRef = useRef();
   const passwordRef = useRef();
 
-  const [errors, setErrors] = useState(null);
 
   const { setUser, setToken } = useStateContext();
 
@@ -20,24 +22,9 @@ const Login = () => {
       email: emailRef.current.value,
       password: passwordRef.current.value,
     };
-    setErrors(null);
-    axiosClient
-      .post("/login", payload)
-      .then(({ data }) => {
-        setUser(data.user);
-        setToken(data.token);
-      })
-      .catch((err) => {
-        console.log(err);
-        const response = err.response;
-        if (response && response.status === 422) {
-          if (response.data.errors) {
-            setErrors(response.data.errors);
-          } else {
-            setErrors({ email: [response.data.message] });
-          }
-        }
-      });
+    login(payload)
+    console.log(user)
+
   };
   return (
     <div className="login">
