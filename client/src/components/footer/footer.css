@@ -1,88 +1,89 @@
 .footer {
-  height: 40vh;
-  width: 100%;
-  background-color: black;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
+    height: 40vh;
+    width: 100%;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    z-index: -1;
 }
 
 .footer-info {
-  height: 60%;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: #403d39;
+    height: 60%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #403d39;
 }
 
 .copyright {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .copyright p {
-  text-align: center;
-  font-size: 10px;
+    text-align: center;
+    font-size: 10px;
 }
 
 .footer-links {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
 }
 
 .footer-links a {
-  text-decoration: none;
-  color: #ccc5b9;
-  font-size: 15px;
+    text-decoration: none;
+    color: #ccc5b9;
+    font-size: 15px;
 }
 
 .footer-socials {
-  height: 40%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    height: 40%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .socials-icons {
-  color: #eb5e28;
-  width: 30px;
-  height: 30px;
-  margin: 30px;
-  cursor: pointer;
+    color: #eb5e28;
+    width: 30px;
+    height: 30px;
+    margin: 30px;
+    cursor: pointer;
 }
 
 .footer-info > div {
-  width: 33%;
-  height: 100%;
+    width: 33%;
+    height: 100%;
 }
 
 .contacts {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  padding: 0 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 0 50px;
 }
 
 .contact-group {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .contact-group p {
-  font-size: 12px;
-  text-align: center;
-  width: 80%;
+    font-size: 12px;
+    text-align: center;
+    width: 80%;
 }
 
 .contact-icon {

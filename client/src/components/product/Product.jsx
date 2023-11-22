@@ -1,20 +1,24 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { React } from "react";
 import RemBtn from "./rem-btn/RemBtn";
 import AddBtn from "./add-btn/AddBtn";
-import { useEffect } from "react";
 import "./product.css";
-
+import { useProductContext } from "../../context/productsContext";
 const Product = ({ product, items, onAdd }) => {
-    // const [isClicked, setIsClicked] = useState(false);
+    const { setOpenModal, setProductId } = useProductContext();
+
     const fullname = product.name;
     let maxChar = 15;
-
     let reducedName = fullname.slice(0, maxChar);
     return (
         <div className="card-container">
             <div className="card-body">
-                <div className="card-img">
+                <div
+                    className="card-img"
+                    onClick={() => {
+                        setOpenModal(true);
+                        setProductId(product.id);
+                    }}
+                >
                     <img src={product.image} alt={product.name} />
                 </div>
             </div>
@@ -32,7 +36,11 @@ const Product = ({ product, items, onAdd }) => {
                     >
                         {product.available ? "in stock" : "unavailable"}
                     </div>
-                    <div className="card-price">$ {product.price}.00</div>
+                    <div className="card-price">
+                        {Number.isInteger(product.price)
+                            ? `$${product.price}.00`
+                            : `$${product.price}`}
+                    </div>
                 </div>
                 <div className="btn-con">
                     {items.find((i) => i.id === product.id) ? (

@@ -1,108 +1,114 @@
 .card-container {
-  position: relative;
-  min-width: 180px;
-  height: 250px;
-  border-radius: 2rem;
-  margin: 20px;
-  transition: all 0.2s cubic-bezier(0.32, 0.38, 0.42, 1);
-  border: #ccc5b9 3px solid;
+    position: relative;
+    min-width: 180px;
+    height: 250px;
+    border-radius: 2rem;
+    margin: 20px;
+    transition: all 0.2s cubic-bezier(0.32, 0.38, 0.42, 1);
+    /* border: #ccc5b9 3px solid; */
+    background-color: #33312e;
 
-  font-family: poppins;
-  overflow: hidden;
+    font-family: poppins;
+    overflow: hidden;
 }
 .card-container:hover {
-  /* scale: 0.95; */
-  /* background-color: #403d39; */
+    /* scale: 0.95; */
+    /* background-color: #403d39; */
 }
 
 .card-container:hover .overlay,
 .overlay:hover {
-  top: 50%;
+    top: 50%;
 }
 .card-img {
-  box-shadow: rgba(0, 0, 0, 0.45) 0px -50px 36px -28px inset;
-  padding: 10px;
-  overflow: hidden;
-  height: 100%;
+    box-shadow: rgba(0, 0, 0, 0.45) 0px -50px 36px -28px inset;
+    padding: 10px;
+    overflow: hidden;
+    height: 100%;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+}
+.card-img:hover {
+    scale: 1.2;
 }
 
 .card-body {
-  height: 100%;
-  width: 100%;
+    height: 100%;
+    width: 100%;
 }
 
 .overlay {
-  top: 85%;
-  position: absolute;
-  height: 50%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  backdrop-filter: blur(20px);
-  transition: all cubic-bezier(0.32, 0.38, 0.42, 1) 0.5s;
-  background-color: rgba(0, 0, 0, 0.45);
+    top: 85%;
+    position: absolute;
+    height: 50%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(20px);
+    transition: all cubic-bezier(0.32, 0.38, 0.42, 1) 0.5s;
+    background-color: rgba(0, 0, 0, 0.45);
 }
 
 .card-img img {
-  max-width: 100%;
-  /* max-height: 75%; */
+    max-width: 100%;
+    /* max-height: 75%; */
 }
 
 .card-name {
-  height: 25%;
-  overflow: hidden;
-  font-weight: 600;
-  display: grid;
-  place-items: center;
+    height: 25%;
+    overflow: hidden;
+    font-weight: 600;
+    display: grid;
+    place-items: center;
 }
 
 .card-name p {
-  text-align: center;
-  font-size: 1rem;
-  color: #fffcf2;
+    text-align: center;
+    font-size: 1rem;
+    color: #fffcf2;
 }
 
 .price-size {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  color: #ccc5b9;
-  font-size: 0.7rem;
-  padding: 0 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    color: #ccc5b9;
+    font-size: 0.7rem;
+    padding: 0 20px;
 }
 
 .in-stock {
-  border-radius: 10px;
-  background-color: #ccc5b9;
-  color: #403d39;
-  padding: 0 5px;
-  font-weight: 700;
+    border-radius: 10px;
+    background-color: #ccc5b9;
+    color: #403d39;
+    padding: 0 5px;
+    font-weight: 700;
 }
 .card-price {
-  border-radius: 10px;
-  color: #1bab4d;
-  padding: 0 5px;
-  font-weight: 600;
+    border-radius: 10px;
+    color: #1bab4d;
+    padding: 0 5px;
+    font-weight: 600;
 }
 
 .btn-con {
-  padding: 10px;
+    padding: 10px;
 }
 
 .unavailable {
-  background-color: #eb9d28;
+    background-color: #eb9d28;
 }
 
 .disabled-btn {
-  height: 30px;
-  border: 2px #ccc5b9;
-  border-style: dashed;
-  border-radius: 7px;
-  color: #ccc5b9;
-  width: 100px;
-  background: none;
-  font-family: poppins;
-  font-size: 0.8rem;
+    height: 30px;
+    border: 2px #ccc5b9;
+    border-style: dashed;
+    border-radius: 7px;
+    color: #ccc5b9;
+    width: 100px;
+    background: none;
+    font-family: poppins;
+    font-size: 0.8rem;
 }

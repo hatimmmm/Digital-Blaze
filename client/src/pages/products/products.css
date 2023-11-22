@@ -1,4 +1,5 @@
 .products-container {
-  width: 80%;
-  margin-top: 10vh;
+    width: 80%;
+    margin-top: 10vh;
+    position: relative;
 }
