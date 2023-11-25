@@ -1,62 +1,84 @@
-import React from "react";
-import { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./features.css";
 import features from "./featuresList";
-import { motion } from "framer-motion";
+// import {} from "framer-motion";
+import { gsap } from "gsap";
+import { delay } from "lodash";
+import { ScrollTrigger, Power4 } from "gsap/all";
 
 const Card = ({ title, icon, description }) => {
-  const [mousOver, setMouseOver] = useState(false);
+    let tl = gsap.timeline();
+    let card = useRef(null);
 
-  const HandleMouseEnter = () => {
-    setMouseOver(true);
-  };
-  const HandleMouseLeave = () => {
-    setMouseOver(false);
-  };
+    const HandleMouseEnter = () => {
+        tl.to(card, {
+            duration: 0.7,
+            ease: "expo.out",
+            height: "auto",
+            visibility: "visible",
+        });
+    };
+    const HandleMouseLeave = () => {
+        tl.to(card, {
+            duration: 0.7,
+            ease: "power3.out",
+            height: "0px",
+            visibility: "hidden",
+        });
+    };
 
-  return (
-    <motion.div
-      transition={{ layout: { duration: 1, type: "spring" } }}
-      layout
-      onMouseOver={HandleMouseEnter}
-      onMouseLeave={HandleMouseLeave}
-      className="feature-card"
-    >
-      <motion.div className="feature-icon-con">
-        <motion.span layout="position">{icon}</motion.span>
-      </motion.div>
-      <motion.div className="feature-title">
-        <motion.h3 layout="position">{title}</motion.h3>
-      </motion.div>
-      {mousOver && (
-        <motion.div className="feature-desc">
-          <motion.p layout="position">{description}</motion.p>
-        </motion.div>
-      )}
-    </motion.div>
-  );
+    return (
+        <div
+            className="feature-card"
+            onMouseEnter={HandleMouseEnter}
+            onMouseLeave={HandleMouseLeave}
+        >
+            <div className="feature-icon-con">
+                <span layout="position">{icon}</span>
+            </div>
+            <div className="feature-title">
+                <h3 layout="position">{title}</h3>
+            </div>
+
+            <div className="feature-desc" ref={(el) => (card = el)}>
+                <p layout="position">{description}</p>
+            </div>
+        </div>
+    );
 };
 
 const Features = () => {
-  return (
-    <div className="features" id="features">
-      <div className="features-title">
-        <h1>Features</h1>
-      </div>
-      <div className="feature-card-container">
-        {features.map((feature) => {
-          return (
-            <Card
-              key={feature.id}
-              icon={feature.icon}
-              title={feature.title}
-              description={feature.description}
-            />
-          );
-        })}
-      </div>
-    </div>
-  );
+    gsap.registerPlugin(ScrollTrigger);
+    useEffect(() => {
+        gsap.to(".feature-card", {
+            y: 0,
+            opacity: 1,
+            delay: 0.5,
+            scrollTrigger: {
+                trigger: ".feature-card-container",
+            },
+        });
+    }, []);
+
+    return (
+        <div className="features" id="features">
+            <div className="features-title">
+                <h1>Features</h1>
+            </div>
+            <div className="feature-card-container">
+                {features.map((feature) => {
+                    return (
+                        <Card
+                            key={feature.id}
+                            icon={feature.icon}
+                            title={feature.title}
+                            description={feature.description}
+                        />
+                    );
+                })}
+            </div>
+        </div>
+    );
 };
 
 export default Features;
