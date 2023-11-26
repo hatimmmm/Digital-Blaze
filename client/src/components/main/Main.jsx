@@ -13,6 +13,8 @@ const Main = () => {
     let image = useRef(null);
     let arrow = useRef(null);
 
+    // animations
+
     useEffect(() => {
         tl.to(header, { opacity: 1, y: 0, duration: 0.3, ease: Power4 })
             .to(
@@ -44,6 +46,7 @@ const Main = () => {
             yoyo: true,
         });
     }, []);
+
     const onEnter = ({ currentTarget }) => {
         gsap.to(currentTarget, {
             ease: "back.out(2)",

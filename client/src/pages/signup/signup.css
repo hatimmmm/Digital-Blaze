@@ -1,113 +1,113 @@
 .signup {
-  height: 100vh;
-  width: 100%;
-  /* background-color: #252422; */
-  background: radial-gradient(#252422, #000);
-  padding-top: 10vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
+    height: 100vh;
+    width: 100%;
+    /* background-color: #252422; */
+    background: radial-gradient(#252422, #000);
+    padding-top: 10vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
 }
 .title h1 {
-  color: #fffcf2;
-  font-size: 3em;
+    color: #fffcf2;
+    font-size: 3em;
 }
 .signup .form-container {
-  width: 100%;
-  min-height: 80%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    width: 100%;
+    min-height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .signup form {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  height: fit-content;
-  width: 25em;
-  border-radius: 2em;
-  background-color: #33312e;
-  padding: 1em;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: fit-content;
+    width: 25em;
+    border-radius: 2em;
+    background-color: #33312e;
+    padding: 1em;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
 .form-control {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  margin: 0.5em 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0.5em 0;
 }
 
-input {
-  background-color: #403d39;
-  border: none;
-  height: 3em;
-  border-radius: 1.5em;
-  color: #ccc5b9;
-  padding: 0 1em;
-  transition: all ease-in-out 0.1s;
-  text-align: center;
-  caret-color: #eb5e28;
-  font-weight: 800;
+.form-control input {
+    background-color: #403d39;
+    border: none;
+    height: 3em;
+    border-radius: 1.5em;
+    color: #ccc5b9;
+    padding: 0 1em;
+    transition: all ease-in-out 0.1s;
+    text-align: center;
+    caret-color: #eb5e28;
+    font-weight: 800;
 }
 
 .form-control label {
-  color: #ccc5b9;
-  text-align: center;
-  font-weight: 600;
+    color: #ccc5b9;
+    text-align: center;
+    font-weight: 600;
 }
 
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="password"]:focus {
-  outline-width: 0;
-  box-shadow: 0px 0px 0px 5px #eb5e28;
-  background-color: #635f59;
+.form-control input[type="text"]:focus,
+.form-control input[type="email"]:focus,
+.form-control input[type="password"]:focus {
+    outline-width: 0;
+    box-shadow: 0px 0px 0px 5px #eb5e28;
+    background-color: #635f59;
 }
 
-input[type="submit"] {
-  color: #252422;
-  background-color: #ccc5b9;
+.form-control input[type="submit"] {
+    color: #252422;
+    background-color: #ccc5b9;
 }
-input[type="submit"]:focus {
-  color: #252422;
-  background-color: #eb5e28;
+.form-control input[type="submit"]:focus {
+    color: #252422;
+    background-color: #eb5e28;
 }
 
-input[type="submit"]:active {
-  color: #252422;
-  background-color: #eb5e28;
-  scale: 0.9;
+.form-control input[type="submit"]:active {
+    color: #252422;
+    background-color: #eb5e28;
+    scale: 0.9;
 }
 
 .not-member {
-  font-size: 0.7em;
-  color: #635f59;
+    font-size: 0.7em;
+    color: #635f59;
 }
 
 .not-member a {
-  color: #eb5e28;
-  font-size: 1em;
+    color: #eb5e28;
+    font-size: 1em;
 }
 
 .error-msg {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(235, 40, 40, 0.3);
-  border-radius: 15px;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(235, 40, 40, 0.3);
+    border-radius: 15px;
 }
 
 .error-msg p {
-  color: #e65050;
-  font-size: 12px;
-  text-align: center;
-  height: 18px;
-  margin: 2px;
-  width: 100%;
+    color: #e65050;
+    font-size: 12px;
+    text-align: center;
+    height: 18px;
+    margin: 2px;
+    width: 100%;
 }

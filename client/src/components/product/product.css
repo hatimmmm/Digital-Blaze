@@ -59,7 +59,7 @@
 .card-name {
     height: 25%;
     overflow: hidden;
-    font-weight: 600;
+    font-weight: 400;
     display: grid;
     place-items: center;
 }

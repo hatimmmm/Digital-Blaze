@@ -7,13 +7,17 @@ import { setBrands, setProducts } from "../../store/features/cart/cartSlice";
 import Loading from "../../components/loading/Loading";
 import ProductModal from "../../components/product-modal/ProductModal";
 import { ProductContextProvider } from "../../context/productsContext";
+import SearchBar from "../../components/search-bar/SearchBar";
+import ProductsHeader from "../../components/products-header/ProductsHeader";
 
 const Products = () => {
     let [loading, setLoading] = useState(true);
     const { products } = useSelector((state) => state.cart);
     const { brands } = useSelector((state) => state.cart);
     const dispatch = useDispatch();
+
     // fetchin data
+
     useEffect(() => {
         axiosClient
             .get("/brands")
@@ -28,15 +32,19 @@ const Products = () => {
             })
             .catch((err) => console.log(err));
     }, []);
+
     // loading state
+
     useEffect(() => {
         if (brands && products) {
             setLoading(false);
         }
     }, [products, brands]);
+
     return (
         <ProductContextProvider>
             <div className="products-container">
+                <ProductsHeader />
                 {loading ? (
                     <Loading />
                 ) : (

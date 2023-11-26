@@ -6,7 +6,7 @@ import "react-multi-carousel/lib/styles.css";
 import { setItems } from "../../store/features/cart/cartSlice";
 import Product from "../product/Product";
 
-const Slider = ({ data, brand }) => {
+const Slider = ({ brand }) => {
     const { items, products } = useSelector((state) => state.cart);
     const dispatch = useDispatch();
     const responsive = {
