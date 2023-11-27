@@ -7,7 +7,7 @@ import { setItems } from "../../store/features/cart/cartSlice";
 import Product from "../product/Product";
 
 const Slider = ({ brand }) => {
-    const { items, products } = useSelector((state) => state.cart);
+    const { products } = useSelector((state) => state.cart);
     const dispatch = useDispatch();
     const responsive = {
         superLargeDesktop: {
@@ -65,8 +65,6 @@ const Slider = ({ brand }) => {
                             <Product
                                 key={product.id}
                                 product={product}
-                                onAdd={onAdd}
-                                items={items}
                             ></Product>
                         );
                     }

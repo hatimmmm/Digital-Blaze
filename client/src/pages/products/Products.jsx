@@ -9,6 +9,9 @@ import ProductModal from "../../components/product-modal/ProductModal";
 import { ProductContextProvider } from "../../context/productsContext";
 import SearchBar from "../../components/search-bar/SearchBar";
 import ProductsHeader from "../../components/products-header/ProductsHeader";
+import Product from "../../components/product/Product";
+import ProductsBody from "../../components/products-body/ProductsBody";
+import Separator from "../../components/seperator/Separator";
 
 const Products = () => {
     let [loading, setLoading] = useState(true);
@@ -45,13 +48,8 @@ const Products = () => {
         <ProductContextProvider>
             <div className="products-container">
                 <ProductsHeader />
-                {loading ? (
-                    <Loading />
-                ) : (
-                    brands.map((brand) => (
-                        <Carousel brand={brand} key={brand.id} />
-                    ))
-                )}
+                <Separator content={"Latest products"} />
+                {loading ? <Loading /> : <ProductsBody products={products} />}
                 <ProductModal />
             </div>
         </ProductContextProvider>

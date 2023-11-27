@@ -3,12 +3,18 @@ import RemBtn from "./rem-btn/RemBtn";
 import AddBtn from "./add-btn/AddBtn";
 import "./product.css";
 import { useProductContext } from "../../context/productsContext";
-const Product = ({ product, items, onAdd }) => {
-    const { setOpenModal, setProductId } = useProductContext();
+import { useSelector } from "react-redux";
+import { setItems } from "../../store/features/cart/cartSlice";
 
+const Product = ({ product }) => {
+    const { setOpenModal, setProductId } = useProductContext();
+    const { items } = useSelector((state) => state.cart);
     const fullname = product.name;
     let maxChar = 15;
     let reducedName = fullname.slice(0, maxChar);
+    const onAdd = (newItem) => {
+        dispatch(setItems(newItem));
+    };
     return (
         <div className="card-container">
             <div className="card-body">

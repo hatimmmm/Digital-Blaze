@@ -1,0 +1,29 @@
+.separator {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 10vh;
+    width: 100%;
+    margin: 5vh 0;
+}
+
+.separator img {
+    height: 10vh;
+}
+
+.line {
+    height: 4px;
+    width: 40%;
+    background-color: #ccc5b9;
+    border-radius: 2px;
+}
+
+.separator-content {
+    font-size: larger;
+    color: #ccc5b9;
+    text-align: center;
+    width: fit-content;
+    height: fit-content;
+    margin: 0 20px;
+    width: 20%;
+}
