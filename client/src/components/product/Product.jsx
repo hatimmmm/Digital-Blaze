@@ -3,7 +3,7 @@ import RemBtn from "./rem-btn/RemBtn";
 import AddBtn from "./add-btn/AddBtn";
 import "./product.css";
 import { useProductContext } from "../../context/productsContext";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setItems } from "../../store/features/cart/cartSlice";
 
 const Product = ({ product }) => {
@@ -12,6 +12,7 @@ const Product = ({ product }) => {
     const fullname = product.name;
     let maxChar = 15;
     let reducedName = fullname.slice(0, maxChar);
+    const dispatch = useDispatch();
     const onAdd = (newItem) => {
         dispatch(setItems(newItem));
     };
