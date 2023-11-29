@@ -40,7 +40,7 @@ const ProductsBody = ({ products }) => {
                 let nameDesc = [...filteredProducts].sort((a, b) => {
                     let a_uppercase = a.name.toUpperCase();
                     let b_uppercase = b.name.toUpperCase();
-                    if (a_uppercase > b_uppercase) {
+                    if (a_uppercase < b_uppercase) {
                         return 1;
                     } else {
                         return -1;
@@ -68,7 +68,7 @@ const ProductsBody = ({ products }) => {
                 setFilteredProducts(products);
                 break;
         }
-    }, []);
+    }, [sortType]);
 
     return (
         <div className="products-body">
