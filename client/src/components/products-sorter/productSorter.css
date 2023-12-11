@@ -35,7 +35,7 @@
 label span {
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
     cursor: pointer;
     background-color: #fffcf2;
     padding: 0.375em 0.75em;
@@ -45,8 +45,8 @@ label span {
     color: #403d39;
     transition: background-color 0.5s ease;
     width: fit-content;
-    height: 20px;
-    font-size: 10px;
+    height: fit-content;
+    font-size: 15px;
 }
 
 label:first-child span {

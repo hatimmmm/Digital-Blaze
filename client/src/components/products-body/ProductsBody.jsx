@@ -2,24 +2,37 @@ import React, { useEffect, useState } from "react";
 import "./productsBody.css";
 import Product from "../product/Product";
 import { useProductContext } from "../../context/productsContext";
+import { useSelector } from "react-redux";
+import Loading from "../loading/Loading";
+import { useForceUpdate } from "framer-motion";
 
-const ProductsBody = ({ products }) => {
-    const { searchText, sortType } = useProductContext();
-    let [filteredProducts, setFilteredProducts] = useState(products);
+const ProductsBody = () => {
+    const { searchText, sortType, setFilteredProducts, filteredProducts } =
+        useProductContext();
+    const { products } = useSelector((state) => state.cart);
+    const [loading, setLoading] = useState(true);
+    const update = useForceUpdate;
     // searching algo
-    useEffect(() => {
-        if (searchText === "") {
-            setFilteredProducts(products);
-        } else if (searchText !== "" && products) {
-            setFilteredProducts(
-                products.filter((product) =>
-                    product.name
-                        .toUpperCase()
-                        .includes(searchText.toUpperCase())
-                )
-            );
+    // useEffect(() => {
+    //     if (searchText === "") {
+    //         setFilteredProducts(products);
+    //     } else if (searchText !== "" && products) {
+    //         setFilteredProducts(
+    //             products.filter((product) =>
+    //                 product.name
+    //                     .toUpperCase()
+    //                     .includes(searchText.toUpperCase())
+    //             )
+    //         );
+    //     }
+    // }, [searchText]);
+
+    while (!filteredProducts) {
+        update();
+        if (filteredProducts) {
+            break;
         }
-    }, [searchText]);
+    }
 
     useEffect(() => {
         switch (sortType) {
@@ -70,11 +83,35 @@ const ProductsBody = ({ products }) => {
         }
     }, [sortType]);
 
+    useEffect(() => {
+        while (filteredProducts == []) {
+            update;
+        }
+    }, []);
+
+    useEffect(() => {
+        if (!setFilteredProducts == []) {
+            setLoading(false);
+        }
+    }, [loading]);
     return (
         <div className="products-body">
-            {filteredProducts.map((product) => (
-                <Product product={product} key={product.id} />
-            ))}
+            {!loading ? (
+                filteredProducts
+                    .filter((product) => {
+                        return searchText === ""
+                            ? product
+                            : product.name
+                                  .toUpperCase()
+                                  .includes(searchText.toUpperCase());
+                    })
+                    .map((product) => (
+                        <Product product={product} key={product.id} />
+                    ))
+            ) : (
+                <Loading />
+            )}
+            ;
         </div>
     );
 };

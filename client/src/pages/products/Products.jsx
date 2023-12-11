@@ -5,15 +5,19 @@ import axiosClient from "../../setup/api/axios-client";
 import { setBrands, setProducts } from "../../store/features/cart/cartSlice";
 import Loading from "../../components/loading/Loading";
 import ProductModal from "../../components/product-modal/ProductModal";
-import { ProductContextProvider } from "../../context/productsContext";
+import {
+    ProductContextProvider,
+    useProductContext,
+} from "../../context/productsContext";
 import ProductsHeader from "../../components/products-header/ProductsHeader";
 import ProductsBody from "../../components/products-body/ProductsBody";
 import Separator from "../../components/seperator/Separator";
+import Brands from "../../components/brands/Brands";
 
 const Products = () => {
     let [loading, setLoading] = useState(true);
-    const { products, brands } = useSelector((state) => state.cart);
     const dispatch = useDispatch();
+    const { setFilteredProducts } = useProductContext();
 
     // fetchin data
 
@@ -28,14 +32,17 @@ const Products = () => {
             .get("/products")
             .then(({ data }) => {
                 dispatch(setProducts(data.data));
+                setFilteredProducts(data.data);
             })
             .catch((err) => console.log(err));
     }, []);
 
+    const { products, brands } = useSelector((state) => state.cart);
+
     // loading state
 
     useEffect(() => {
-        if (brands && products) {
+        if (products && brands) {
             setLoading(false);
         }
     }, [products, brands]);
@@ -43,10 +50,18 @@ const Products = () => {
     return (
         <ProductContextProvider>
             <div className="products-container">
-                <ProductsHeader />
-                <Separator content="Latest products" />
-                {loading ? <Loading /> : <ProductsBody products={products} />}
-                <ProductModal />
+                {loading ? (
+                    <Loading />
+                ) : (
+                    <>
+                        <ProductsHeader />
+                        <Separator content="Top brands" />
+                        <Brands />
+                        <Separator content="Latest products" />
+                        <ProductsBody />
+                        <ProductModal />
+                    </>
+                )}
             </div>
         </ProductContextProvider>
     );

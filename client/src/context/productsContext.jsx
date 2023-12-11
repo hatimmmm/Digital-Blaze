@@ -4,6 +4,7 @@ const productsContext = createContext({
     setProductId: () => {},
     setOpenModal: () => {},
     setSearchText: () => {},
+    setFilteredProducts: () => {},
 });
 
 export const useProductContext = () => useContext(productsContext);
@@ -13,6 +14,7 @@ export const ProductContextProvider = ({ children }) => {
     const [productId, setProductId] = useState("");
     const [searchText, setSearchText] = useState("");
     const [sortType, setSortType] = useState("");
+    const [filteredProducts, setFilteredProducts] = useState(null);
 
     return (
         <productsContext.Provider
@@ -25,6 +27,8 @@ export const ProductContextProvider = ({ children }) => {
                 setSearchText,
                 sortType,
                 setSortType,
+                filteredProducts,
+                setFilteredProducts,
             }}
         >
             {children}

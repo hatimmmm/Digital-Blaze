@@ -2,14 +2,14 @@
     width: 100%;
     height: fit-content;
     display: grid;
-    grid-template-columns: repeat(4, 2fr);
-    grid-row: 300px;
+    grid-template-columns: repeat(4, 3fr);
+    /* grid-row: 300px; */
     column-gap: 20px;
     row-gap: 70px;
 }
 
 @media screen and (min-width: 767px) and (max-width: 1023px) {
     .products-body {
-        grid-template-columns: 33% 33% 33%;
+        grid-template-columns: repeat(3, 2fr);
     }
 }

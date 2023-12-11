@@ -5,7 +5,6 @@ import { FaArrowDown, FaArrowUp } from "react-icons/fa";
 
 const ProductsSorter = () => {
     const { setSortType } = useProductContext();
-    // let sorters = ["name-asc", "name-desc", "price-asc", "price-desc"];
     const sorters = [
         {
             value: "name-asc",
